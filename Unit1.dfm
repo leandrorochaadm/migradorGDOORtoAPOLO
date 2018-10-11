@@ -52,28 +52,4 @@ object Form1: TForm1
       TabOrder = 0
     end
   end
-  object ConConnection: TFDConnection
-    Params.Strings = (
-      'ConnectionDef=con')
-    Connected = True
-    LoginPrompt = False
-    Left = 335
-    Top = 51
-  end
-  object qrOrigem: TFDQuery
-    Active = True
-    Connection = ConConnection
-    SQL.Strings = (
-      'select * from c000007')
-    Left = 32
-    Top = 136
-  end
-  object qrDest: TFDQuery
-    Active = True
-    Connection = ConConnection
-    SQL.Strings = (
-      'select * from c000007')
-    Left = 112
-    Top = 136
-  end
 end
