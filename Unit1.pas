@@ -93,14 +93,15 @@ uses
 
 type
   TForm1 = class(TForm)
-    Label1: TLabel;
     Button1: TButton;
-    Label2: TLabel;
     Panel1: TPanel;
     pb: TProgressBar;
+    Memo1: TMemo;
+    Button2: TButton;
 //    function zerarcodigo(codigo:string;qtde:integer):string;
     procedure Button1Click(Sender: TObject);
     procedure testarQr;
+    procedure Button2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -125,6 +126,14 @@ uses uComandos;
 
 
 
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+//ShowMessage(TButton(sender).Caption);
+ShowMessage(TButton(sender).name);
+TButton(sender).Caption:='dahora';
+//teste(Form1);
+end;
+
 procedure TForm1.testarQr;
 begin
 // try
@@ -138,57 +147,9 @@ end;
 
 
 procedure TForm1.Button1Click(Sender: TObject);
-//var
-//posicao : integer;
-//
 begin
-//posicao:=0;
-//
-//
-//  with qrOrigem, sql do
-//  begin
-//    Close;
-//    Clear;
-//    Text := 'select * from c000075';
-//    Open;
-//  end;
-//
-//  with qrDest, sql do
-//  begin
-//    Close;
-//    Clear;
-//    Text := 'update c000075 set CODIGO = :pNovoCod, CODNOTA = :pCODNOTA, CODPRODUTO = :pCODPRODUTO where CODIGO = :pCodigo';
-////    Open;
-//
-//  end;
-//
-//  pb.Max:= qrOrigem.RecordCount;
-//
-//  try
-//  qrOrigem.First;
-//   while not (qrOrigem.Eof) do
-//   begin
-//    pb.Position:=posicao;
-//    qrDest.ParamByName('pCodigo').AsString := qrOrigem.FieldByName('CODIGO').AsString;
-//    qrDest.ParamByName('pNovoCod').AsString := zerarcodigo(qrOrigem.FieldByName('CODIGO').AsString,6);
-//    qrDest.ParamByName('pCODNOTA').AsString := zerarcodigo(qrOrigem.FieldByName('CODNOTA').AsString,6);
-//    qrDest.ParamByName('pCODPRODUTO').AsString := zerarcodigo(qrOrigem.FieldByName('CODPRODUTO').AsString,6);
-//    Label2.Caption:= IntToStr(posicao)+' de '+IntToStr(qrOrigem.RecordCount) ;
-//
-//    posicao:= posicao+1;
-//      qrDest.ExecSQL;
-//      qrOrigem.Next;
-//   end;
-//
-//  except on E: Exception do
-//  ShowMessage(e.ToString);
-//  end;
-//
-
-
-//       testarQr;
-// Label2.Caption := 'Contagem de registros' + IntToStr(qrOrigem.RecordCount);
-migrar;
+//migrarCondicionalCabecalho;
+migrarCondicionalItem;
 
 end;
 
