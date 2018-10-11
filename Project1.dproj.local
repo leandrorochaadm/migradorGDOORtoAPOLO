@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899/12/30 00:00:00.000.425,=C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.998,C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Project1.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.488,C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit1.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.488,C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit1.pas</Transaction>
+    <Transaction>2018/10/11 09:17:10.180,=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.pas</Transaction>
+    <Transaction>2018/10/11 09:20:25.007,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\uComandos.pas=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.pas</Transaction>
+  </Transactions>
+</BorlandProject>
