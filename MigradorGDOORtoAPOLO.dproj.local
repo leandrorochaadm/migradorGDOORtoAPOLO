@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899/12/30 00:00:00.000.488,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit1.pas=C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.998,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Project1.dproj=C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.488,C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit1.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.998,C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Project1.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.488,C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit1.pas</Transaction>
     <Transaction>1899/12/30 00:00:00.000.425,=C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.488,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit1.dfm=C:\Users\Leandro\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>2018/10/11 09:17:10.000.180,=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.pas</Transaction>
-    <Transaction>2018/10/11 09:20:25.000.007,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.pas=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\uComandos.pas</Transaction>
+    <Transaction>2018/10/11 09:20:25.000.007,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\uComandos.pas=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.pas</Transaction>
     <Transaction>2018/10/11 10:18:55.000.834,=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.pas</Transaction>
-    <Transaction>2018/10/11 11:22:41.000.451,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.dfm=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\uDM.dfm</Transaction>
-    <Transaction>2018/10/11 11:22:41.000.451,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.pas=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\uDM.pas</Transaction>
-    <Transaction>2018/10/11 15:58:34.200,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\MigradorGDOORtoAPOLO.dproj=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Project1.dproj</Transaction>
+    <Transaction>2018/10/11 11:22:41.000.451,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\uDM.dfm=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.dfm</Transaction>
+    <Transaction>2018/10/11 11:22:41.000.451,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\uDM.pas=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Unit2.pas</Transaction>
+    <Transaction>2018/10/11 15:58:34.000.200,C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\Project1.dproj=C:\projetos\Delphi\projetos\vcl\migrador gtor\zerar codigo\MigradorGDOORtoAPOLO.dproj</Transaction>
   </Transactions>
 </BorlandProject>

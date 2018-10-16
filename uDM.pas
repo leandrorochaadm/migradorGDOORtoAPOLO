@@ -15,6 +15,7 @@ type
     qrOrigem: TFDQuery;
     qrDest: TFDQuery;
     ConConnection: TFDConnection;
+    congdoor: TFDConnection;
   private
     { Private declarations }
   public
