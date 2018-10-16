@@ -41,4 +41,12 @@ object dm: Tdm
     Left = 207
     Top = 35
   end
+  object qrCommon: TFDQuery
+    Active = True
+    Connection = ConConnection
+    SQL.Strings = (
+      'select * from c000007')
+    Left = 112
+    Top = 182
+  end
 end

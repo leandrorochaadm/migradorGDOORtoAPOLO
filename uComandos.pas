@@ -10,6 +10,9 @@ procedure migrarCondicionalItem;
 // procedure teste(Sender: TObject);
 procedure log(txt: string);
 procedure migrarCondicionalCabecalho;
+function verSequencia(tabela:string):integer;
+procedure atualizarSequencia(tabela:string; add:integer);
+
 
 implementation
 
@@ -22,24 +25,35 @@ begin
   Result := codigo;
 end;
 
+function verSequencia(tabela:string):integer;
+begin
+with dm.qrCommon, sql do
+  begin
+    Close;
+    Clear;
+    Text := 'select sequencia from c000000 c where c.codigo ='+tabela;
+    Open;
+  end;
+  Result:= dm.qrCommon.FieldByName('SEQUENCIA').AsInteger;
+end;
+
+procedure atualizarSequencia(tabela:string; add:integer);
+begin
+//with dm.qrCommon, sql do
+//  begin
+//    Close;
+//    Clear;
+//    Text := 'update c000000 c set c.SEQUENCIA = c.SEQUENCIA+'+add+' where c.CODIGO='+tabela;
+//    ExecSQL;
+//  end;
+
+end;
+
 procedure migrarCondicionalCabecalho;
 var
   posicao: integer;
 const
 sqlOrigem: String = 'SELECT '+
-
-
-//    '''000001'' AS CODVENDEDOR, '+
-//    'COND.data as DATA , '+
-//    'COND.codcliente as codcliente, '+
-//    'COND.valortotal AS TOTAL, '+
-//    '9 AS TIPO, '+
-//    '1 AS SITUACAO, '+
-//    '1 AS ATACADO_VAREJO, '+
-//    '0 AS RETORNO, '+
-//    '''Condicional'' as OBS '+
-//    'FROM tcondicional  COND ';
-
     'COND.controle AS CODIGO, '+
     '000099 AS CODCAIXA, '+
     '''000001'' as CODVENDEDOR, '+
@@ -51,22 +65,10 @@ sqlOrigem: String = 'SELECT '+
     '1 AS ATACADO_VAREJO, '+
     '0 AS RETORNO, '+
     '''Condicional'' as OBS '+
-    'FROM tcondicional  COND ';
+    'FROM tcondicional  COND '+
+    'where cond.controle in (select it.codcondicional from titemcondicional it)';
 
-//  sqlDest: String = 'INSERT INTO C000075 (CODIGO,CODCAIXA,CODVENDEDOR,DATA,CODCLIENTE,TOTAL,TIPO,SITUACAO,ATACADO_VAREJO,ATACADO_VAREJO,OBS ' +
-//  ' ) VALUES ( '+
-//    ':pCODIGO, '+
-//    ':pCODCAIXA, '+
-//    ':pCODVENDEDOR, '+
-//    ':pDATA, '+
-//    ':pCODCLIENTE, '+
-//    ':pTOTAL, '+
-//    ':pTIPO, '+
-//    ':pSITUACAO, '+
-//    ':pATACADO_VAREJO, '+
-//    ':pRETORNO, '+
-//    ':pOBS '+
-//    ' ) ';
+
 
   sqlDest: String = 'INSERT INTO C000074 (CODIGO,CODCAIXA,CODVENDEDOR,DATA,CODCLIENTE,TOTAL,TIPO,SITUACAO,ATACADO_VAREJO,RETORNO,OBS ' +
   ' ) VALUES ( '+
@@ -85,10 +87,10 @@ sqlOrigem: String = 'SELECT '+
 
 begin
   posicao := 1;
-  ShowMessage(sqlOrigem +
-  chr(13) + chr(10)+
-  chr(13) + chr(10)+
-  sqlDest);
+//  ShowMessage(sqlOrigem +
+//  chr(13) + chr(10)+
+//  chr(13) + chr(10)+
+//  sqlDest);
 
 
   with dm.qrOrigem, sql do
@@ -108,6 +110,7 @@ begin
   end;
 
   Form1.pb.Max := dm.qrOrigem.RecordCount;
+//  ShowMessage(INTTOSTR(verSequencia('000075')));
 
   try
     dm.qrOrigem.First;
@@ -195,20 +198,30 @@ sqlOrigem: String = 'SELECT '+
     '2 AS MOVIMENTO '+
     'FROM titemcondicional  IT ';
 
-sqlDest: String = 'update c000075 set ' +
-    'CODIGO =:pCODIGO '+
-    'CODNOTA =:pCODNOTA '+
-    'CODPRODUTO =:pCODPRODUTO '+
-    'UNITARIO =:pUNITARIO '+
-    'TOTAL =:pTOTAL '+
-    'CFOP =:pCFOP '+
-    'DATA =:pDATA '+
-    'UNIDADE =:pUNIDADE '+
-    'MOVIMENTO =:pMOVIMENTO '+
-    'where CODIGO =:pCodigo';
+sqlDest: String = 'INSERT INTO C000075 (CODIGO,CODNOTA,CODPRODUTO,UNITARIO,TOTAL,CFOP,DATA,UNIDADE,qtde,MOVIMENTO ' +
+  ' ) VALUES ( '+
+    ':pCODIGO, '+
+    ':pCODNOTA, '+
+    ':pCODPRODUTO, '+
+    ':pUNITARIO, '+
+    ':pTOTAL, '+
+    ':pCFOP, '+
+    ':pDATA, '+
+    ':pUNIDADE, '+
+    ':pqtde, '+
+    ':pMOVIMENTO '+
+//    ':pCODPRODUTO '+
+
+    ' ) ';
 
 begin
   posicao := 1;
+
+//ShowMessage(sqlOrigem +
+//  chr(13) + chr(10)+
+//  chr(13) + chr(10)+
+//  sqlDest);
+
 
   with dm.qrOrigem, sql do
   begin
@@ -223,7 +236,7 @@ begin
     Close;
     Clear;
     Text := sqlDest;
-    Open;
+
   end;
 
   Form1.pb.Max := dm.qrOrigem.RecordCount;
@@ -234,17 +247,16 @@ begin
     begin
       Form1.pb.Position := posicao;
 
+//      ShowMessage( zerarcodigo(IntToStr(dm.qrOrigem.FieldByName('CODIGO').AsInteger), 6));
+
       dm.qrDest.ParamByName('pCODIGO').AsString :=
-        zerarcodigo(dm.qrOrigem.FieldByName('CODIGO').AsString, 6);
+        zerarcodigo(IntToStr(dm.qrOrigem.FieldByName('CODIGO').AsInteger), 6);
 
       dm.qrDest.ParamByName('pCODNOTA').AsString :=
         zerarcodigo(IntToStr(dm.qrOrigem.FieldByName('CODNOTA').AsInteger), 6);
 
-//      dm.qrDest.ParamByName('pCODNOTA').AsString :=
-//        zerarcodigo(IntToStr(dm.qrOrigem.FieldByName('CODNOTA').AsInteger), 6);
-
       dm.qrDest.ParamByName('pCODPRODUTO').AsString :=
-        zerarcodigo(IntToStr(dm.qrOrigem.FieldByName('CODPRODUTO').AsInteger),6);
+        zerarcodigo(IntToStr(dm.qrOrigem.FieldByName('CODPRODUTO').AsInteger), 6);
 
       dm.qrDest.ParamByName('pUNITARIO').AsFloat :=
         dm.qrOrigem.FieldByName('UNITARIO').AsFloat;
@@ -255,25 +267,47 @@ begin
       dm.qrDest.ParamByName('pCFOP').AsString :=
         dm.qrOrigem.FieldByName('CFOP').AsString;
 
-      dm.qrDest.ParamByName('pUNIDADE').AsFloat :=
-        dm.qrOrigem.FieldByName('UNIDADE').AsFloat;
+      dm.qrDest.ParamByName('pTOTAL').AsFloat :=
+        dm.qrOrigem.FieldByName('TOTAL').AsFloat;
 
+      dm.qrDest.ParamByName('pDATA').AsDate :=
+        dm.qrOrigem.FieldByName('DATA').AsDateTime;
+
+      dm.qrDest.ParamByName('pUNIDADE').AsString :=
+        dm.qrOrigem.FieldByName('UNIDADE').AsString;
+//
       dm.qrDest.ParamByName('pqtde').AsFloat :=
         dm.qrOrigem.FieldByName('qtde').AsFloat;
-
+//
       dm.qrDest.ParamByName('pMOVIMENTO').AsInteger :=
         dm.qrOrigem.FieldByName('MOVIMENTO').AsInteger;
+//
+//      dm.qrDest.ParamByName('pTOTAL').AsFloat :=
+//        dm.qrOrigem.FieldByName('TOTAL').AsFloat;
+//
+//      dm.qrDest.ParamByName('pTOTAL').AsFloat :=
+//        dm.qrOrigem.FieldByName('TOTAL').AsFloat;
+//
+//      dm.qrDest.ParamByName('pTOTAL').AsFloat :=
+//        dm.qrOrigem.FieldByName('TOTAL').AsFloat;
+//
+//      dm.qrDest.ParamByName('pTOTAL').AsFloat :=
+//        dm.qrOrigem.FieldByName('TOTAL').AsFloat;
+
 
 
       // log
       log(IntToStr(posicao) + ' de ' + IntToStr(dm.qrOrigem.RecordCount) +
-        ' -> ' + 'Condicional n. ' + dm.qrOrigem.FieldByName('CODIGO').AsString
-        + ' -> Cliente ' + dm.qrOrigem.FieldByName('CODCLIENTE').AsString);
+        ' -> ' + 'Condicional n. ' + dm.qrOrigem.FieldByName('CODIGO').AsString+
+        ' -> ' + 'Prod cod. ' + dm.qrOrigem.FieldByName('CODPRODUTO').AsString
+        );
 
       posicao := posicao + 1;
       dm.qrDest.ExecSQL;
       dm.qrOrigem.Next;
     end;
+
+//    atualizarSequencia('000075',posicao);
 
   except
     on E: Exception do
